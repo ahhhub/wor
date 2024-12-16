@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱丽丝 sever hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* 容器样式 */
+        .slideshow-container {
+            position: relative;
+            top:200px;
+            width: 100%;
+            max-width: 800px;
+            margin: auto;
+            overflow: hidden;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+        }
+
+        /* 图片样式 */
+        .slides {
+            display: none;
+            width: 100%;
+        }
+
+        /* 切换按钮样式 */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        /* 底部导航点 */
+        .dots-container {
+            text-align: center;
+            margin-top: 200px;
+        }
+
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .active {
+            background-color: #717171;
+        }
+        .container {
+        position: relative;
+            top:200px;
+    width: 100%; /* 宽度为父元素的 100% */
+    height: 100%; /* 高度为父元素的 100% */
+    font-size: 2em;/* 设置字体大小 */
+    text-align: center;/*居中对齐*/
+    color:pink;
+        }
+    </style>
+</head>
+<body>
+    <!-- 点击反馈 -->
+    <div id="feedback">now loading...</div>
+
+    <!-- 导航栏 -->
+    <nav>
+        <ul>
+            <li><a href="index.html" onclick="showFeedback()">☜返回上一级</a></li>
+            <li style="padding:13px 10px;color:pink;">服  务  器  简  介 </li>
+        </ul>
+    </nav>
+
+    <!-- 内容部分 -->
+    <div class="container">游戏截图</div>
+    <div class="slideshow-container">
+        <!-- 图片 -->
+        <img src="1.jpg" alt="Image 1" class="slides">
+        <img src="2.jpg" alt="Image 2" class="slides">
+        <img src="3.jpg" alt="Image 3" class="slides">
+
+        <!-- 切换按钮 -->
+        <button class="prev" onclick="changeSlide(-1)">❮</button>
+        <button class="next" onclick="changeSlide(1)">❯</button>
+    </div>
+
+    <!-- 底部导航点 -->
+    <div class="dots-container">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
+    <!-- 背景音乐 -->
+    <audio id="bg-music" loop>
+        <source src="Theme_09.ogg" type="audio/mpeg"> <!-- 替换为音乐文件路径 -->
+        Your browser does not support the audio element.
+    </audio>
+    <button onclick="toggleMusic()" style="position:absolute;top:10px;right:25px;z-index:1000;background-color: #389;">🎵</button>
+
+    <script>
+        // 显示点击反馈
+        function showFeedback() {
+            const feedback = document.getElementById('feedback');
+            feedback.style.display = 'block'; // 显示反馈信息
+            setTimeout(() => {
+                feedback.style.display = 'none'; // 2秒后隐藏反馈信息
+            }, 2000);
+        }
+
+        // 背景音乐控制
+        const music = document.getElementById('bg-music');
+        let isPlaying = false;
+
+        function toggleMusic() {
+            if (isPlaying) {
+                music.pause();
+            } else {
+                music.play();
+            }
+            isPlaying = !isPlaying;
+        }
+        
+        let slideIndex = 0; // 当前图片索引
+        let slides = document.getElementsByClassName("slides");
+        let dots = document.getElementsByClassName("dot");
+
+        // 初始化并显示第一张图片
+        function showSlides(n) {
+            if (n >= slides.length) slideIndex = 0;
+            if (n < 0) slideIndex = slides.length - 1;
+
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].classList.remove("active");
+            }
+
+            slides[slideIndex].style.display = "block";
+            dots[slideIndex].classList.add("active");
+        }
+
+        // 切换图片
+        function changeSlide(step) {
+            slideIndex += step;
+            showSlides(slideIndex);
+        }
+
+        // 跳转到指定图片
+        function currentSlide(n) {
+            slideIndex = n - 1;
+            showSlides(slideIndex);
+        }
+
+        // 自动播放功能
+        function autoPlay() {
+            slideIndex++;
+            showSlides(slideIndex);
+            setTimeout(autoPlay, 3000); // 每3秒自动切换
+        }
+
+        // 开始播放
+        showSlides(slideIndex); // 显示第一张图片
+        autoPlay(); // 开始自动播放
+    
+    </script>
+</body>
+</h

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱丽丝 sever hub</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 点击反馈 -->
+    <div id="feedback">now loading...</div>
+
+    <!-- 导航栏 -->
+    <nav>
+        <ul>
+            <li><a href="index.html" onclick="showFeedback()">首页</a></li>
+            <li><a href="error.html" onclick="showFeedback()">关于我们</a></li>
+            <li><a href="1.html" onclick="showFeedback()">服务器简介</a></li>
+            <li><a href="群.html" onclick="showFeedback()">加入群聊</a></li>
+            <li>
+                <a href="#">下载游戏</a>
+                <ul>
+                    <li><a href="https://mc.163.com/m/" onclick="showFeedback()">网易版</a></li>
+                    <li><a href="https://www.123684.com/s/35GVjv-R6jB3" onclick="showFeedback()">基岩版</a></li>
+                    <li><a href="error.html" onclick="showFeedback()">Java版</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- 内容部分 -->
+    <div id="home" class="lightbox">
+        <h1 style="color:pink; font-size:1.9em;" class="center-text">welcome to alis sever<br>欢迎来到爱丽丝服务器</h1>
+    </div>
+    <footer style="font-size:0.5em;color:blue">没有惹，底线都被看穿了
+    <p style="font-size:0.5em;padding:0"><a href="login.html">这里进入管理员页面</a></p></footer>
+
+    <!-- 背景音乐 -->
+    <audio id="bg-music" loop>
+        <source src="TargetForLove_Short_en.ogg" type="audio/mpeg"> <!-- 替换为音乐文件路径 -->
+        Your browser does not support the audio element.
+    </audio>
+    <button onclick="toggleMusic()" style="position:absolute;top:50px;right:307px;z-index:1000;background-color: #389;">🎵</button>
+
+    <script src="script.js"></script>
+</body>

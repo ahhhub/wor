@@ -1,0 +1,132 @@
+ .lightbox {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        @font-face {
+            font-family: 'yuanshen'; /* 字体名称，可自定义 */
+            src: url('yuanshen.ttf') format('truetype'); /* 引入字体文件 */
+        }
+        .center-text {
+            text-align: center; /*文本水平居中*/
+        }
+        body {
+            margin: 0;
+            font-family: yuanshen, sans-serif;
+            background-image: url('爱丽丝.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+        }
+        /* 内容样式 */
+        .content {
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 2em;
+            margin-top: 20%;
+        }
+        p1 {
+            font-size: 1.2em;
+            text-align: center;
+        }
+        a {
+            text-decoration: none; /* 普通状态 */
+        }
+        a:hover {
+            text-decoration: underline; 
+            /* 鼠标悬停时显示下划线 */
+        }
+        footer {
+            background-color: #A7EBFF;
+            font-size: 2em;
+            text-align: center;
+            overflow: hidden;
+        }
+        /* 导航栏样式 */
+        nav {
+            background-color: #389;
+            overflow: hidden;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            flex: 1;
+        }
+        nav ul li a {
+            display: block;
+            color: pink;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.1s; /* 添加过渡效果 */
+        }
+        nav ul li a:hover {
+            background-color: #A7EBFF;
+        }
+        nav ul li a:active {
+            transform: scale(0.95); /* 点击时缩小 */
+            background-color: #6d4; /* 点击时改变背景色 */
+        }
+        /* 子菜单的样式 */
+        nav ul li ul {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li:hover ul {
+            display: block;
+        }
+        nav ul li ul li {
+            flex: none;
+        }
+        nav ul li ul li a {
+            color: white;
+            padding: 10px 14px;
+        }
+        nav ul li ul li a:hover {
+            background-color: #575757;
+        }
+        /* 点击反馈显示样式 */
+        #feedback {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0.9, 0, 0, 0.8);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: none; /* 默认隐藏 */
+            font-size: 1em;
+            z-index: 1000;
+        }
+        .click-feedback {
+            position: absolute;
+            width: 100px;
+            height: 50px;
+            background: url('text.png') no-repeat center; /* 替换为你的素材图片 */
+            background-size: contain;
+            pointer-events: none; /* 防止干扰点击事件 */
+            animation: fadeOut 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(2); /* 放大消失效果 */
+            }
+        }
